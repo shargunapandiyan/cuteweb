@@ -1,0 +1,38 @@
+.custom-filter-select {
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  min-width: 150px;
+}
+
+.date-range-toggle {
+  background-color: #fff !important;
+  color: #495057;
+  border: 1px solid #ced4da !important;
+  border-radius: 8px !important;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  min-width: 240px;
+  justify-content: space-between;
+}
+
+.salary-table .table-header {
+  background-color: #f8f9fa;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.salary-table tbody tr td {
+  border-top: 1px solid #f0f2f5;
+  font-size: 0.95rem;
+}
+
+.employee-name-salary {
+  font-weight: 500;
+  color: #d9534f;
+}
+
+.employee-id {
+  font-size: 0.85rem;
+  color: #6c757d;
+}

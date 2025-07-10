@@ -1,0 +1,92 @@
+.sync-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.search-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+}
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  color: #adb5bd;
+}
+.search-input {
+  padding-left: 40px;
+  border-radius: 8px !important;
+  border: 1px solid #dee2e6;
+}
+
+.table-card {
+  padding: 8px 0;
+  border: none;
+}
+
+.employee-table {
+  margin-bottom: 0;
+}
+
+.employee-table th,
+.employee-table td {
+  vertical-align: middle;
+  padding: 16px 24px !important;
+  border-top: 1px solid #f1f1f1 !important;
+}
+
+.employee-table th {
+  color: #6c757d;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-top: none !important;
+}
+
+/* ststus badge */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 13px;
+}
+.status-badge.active {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.status-badge.inactive {
+  background-color: #d1fae5; 
+  color: #065f46;          
+}
+
+.status-badge .icon {
+  margin-right: 6px;
+}
+
+/* action button */
+.action-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 13px;
+  border: none;
+}
+.edit-button {
+  background-color: #e0e7ff;
+  color: #3730a3;
+}
+
+.delete-button {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
