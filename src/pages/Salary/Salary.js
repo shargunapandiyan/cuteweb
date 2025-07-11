@@ -22,13 +22,12 @@ const Salary = () => {
     setDateRange(range);
   };
 
-  // --- 1. UPDATED MOCK DATA to match new table columns ---
   const sampleEmployee = {
     name: "John Peter",
     id: "#1001",
-    workHrs: "184 Hrs", // New data field
-    workDays: 23,       // New data field
-    Net: 12500,         // New data field
+    workHrs: "184 Hrs",
+    workDays: 23,
+    Net: 12500,
   };
 
   return (
@@ -43,11 +42,13 @@ const Salary = () => {
           <div className="mb-3">
             <MonthYearFilter />
           </div>
-          {/* Shift selection */}
+
           <div className="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3 ">
             <div>
-              {/* 2. UPDATED SHIFT OPTIONS */}
-              <select className="form-select custom-filter-select" defaultValue="all">
+              <select
+                className="form-select custom-filter-select"
+                defaultValue="all"
+              >
                 <option value="all">All Shifts</option>
                 <option value="general">General Shift</option>
                 <option value="night">Night Shift</option>
@@ -63,7 +64,6 @@ const Salary = () => {
             <table className="table table-borderless align-middle salary-table mb-0">
               <thead className="table-header">
                 <tr>
-                  {/* 3. UPDATED TABLE HEADERS */}
                   <th className="p-3">Employee</th>
                   <th className="text-end p-3">Work Hrs</th>
                   <th className="text-end p-3">Work Days</th>
@@ -72,7 +72,6 @@ const Salary = () => {
               </thead>
               <tbody>
                 <tr>
-                  {/* 4. UPDATED TABLE BODY to match new headers */}
                   <td className="p-3">
                     <div className="employee-id">{sampleEmployee.id}</div>
                     <div className="employee-name-salary">
