@@ -6,7 +6,6 @@ import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import * as rdrLocales from "react-date-range/dist/locale";
 import {
-  addDays,
   subDays,
   startOfWeek,
   endOfWeek,
@@ -145,16 +144,16 @@ const DateRangePicker = ({ onRangeChange }) => {
           </div>
 
           {activePreset === "Custom Range" && (
-            <div className="calendar-container"> {/* Added a wrapper div */}
+            <div className="calendar-container">
+              {" "}
+              {/* Added a wrapper div */}
               <DateRange
                 onChange={(item) => setState([item.selection])}
                 showSelectionPreview={true}
                 moveRangeOnFirstSelection={false}
-                // --- KEY CHANGE: Use state to control props ---
                 months={isMobile ? 1 : 2}
                 ranges={state}
                 direction={isMobile ? "vertical" : "horizontal"}
-                // --- END KEY CHANGE ---
                 locale={rdrLocales.enGB}
                 showMonthAndYearPickers={true}
               />

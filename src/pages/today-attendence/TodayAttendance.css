@@ -1,3 +1,19 @@
+/* --- NEW --- Blinking Animation for Badges --- */
+@keyframes blink-animation {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.blink-animation {
+  /*
+    animation: name duration timing-function delay iteration-count direction fill-mode;
+  */
+  animation: blink-animation 1.5s infinite;
+}
+/* --- END NEW --- */
+
+/* --- Existing styles below --- */
 .page-wrapper {
   display: flex;
   flex-direction: column;
@@ -5,6 +21,7 @@
   overflow-x: hidden;
 }
 
+/* ... (rest of your CSS is perfect and remains unchanged) ... */
 .page-content {
   flex: 1;
   overflow-y: auto;
@@ -42,7 +59,6 @@
   transition: all 0.2s ease-in-out;
 }
 
-/* Style for the active "Present" button */
 .active-tab-button {
   background-color: #ffb600;
   color: #343a40;
@@ -52,7 +68,6 @@
   color: #343a40;
 }
 
-/* Style for the other "Absent", "Late Entry" buttons */
 .filter-btn-new {
   background-color: #ffffff;
   color: #495057;
@@ -61,11 +76,10 @@
   background-color: #f1f1f1;
 }
 
-/* New style for the red count badge */
 .count-badge {
   background-color: #e74c3c;
   color: white;
-  border-radius: 50%; /* Makes it a circle */
+  border-radius: 50%;
   font-size: 0.75rem;
   font-weight: 700;
   min-width: 20px;
@@ -73,10 +87,9 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  line-height: 1; /* Aligns text vertically in the circle */
+  line-height: 1;
 }
 
-/* --- Filter Input Styles --- */
 .custom-form-control {
   border: 1px solid #dce0e5;
   background-color: #ffffff;
@@ -89,7 +102,6 @@
   box-shadow: 0 0 0 0.2rem rgba(67, 94, 190, 0.25);
 }
 
-/* --- Table Styles --- */
 .table-header > tr > th {
   background-color: #f8f9fa;
   color: #6c757d;
@@ -101,4 +113,26 @@
 }
 .table-header th:last-child {
   border-top-right-radius: 0.75rem;
+}
+
+.action-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.edit-button {
+  background-color: #e0e7ff;
+  color: #3730a3;
+}
+
+.edit-button:hover {
+  background-color: #c7d2fe;
 }

@@ -5,24 +5,6 @@
   font-weight: 500;
 }
 
-.search-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 300px;
-}
-.search-icon {
-  position: absolute;
-  top: 50%;
-  left: 15px;
-  transform: translateY(-50%);
-  color: #adb5bd;
-}
-.search-input {
-  padding-left: 40px;
-  border-radius: 8px !important;
-  border: 1px solid #dee2e6;
-}
-
 .table-card {
   padding: 8px 0;
   border: none;
@@ -62,8 +44,8 @@
 }
 
 .status-badge.inactive {
-  background-color: #d1fae5; 
-  color: #065f46;          
+  background-color: #d1fae5;
+  color: #065f46;
 }
 
 .status-badge .icon {

@@ -5,7 +5,6 @@
   border-radius: 8px;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
   gap: 10px;
 }
 
@@ -25,27 +24,43 @@
   color: white;
   box-shadow: none;
 }
-
 .year-dropdown option {
   color: #000;
 }
+
 .month-list {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
   flex-grow: 1;
-  justify-content: space-around;
+  overflow-x: auto;
+  justify-content: flex-start;
   scrollbar-width: none;
+  padding: 4px 0;
+}
+.month-list::-webkit-scrollbar {
+  display: none;
 }
 
 .month-item {
   background: none;
   border: none;
+
   color: rgba(255, 255, 255, 0.7);
   font-weight: 500;
-  padding: 5px 10px;
+  padding: 5px 15px;
   border-radius: 6px;
   transition: all 0.2s ease-in-out;
+  flex-shrink: 0;
+}
+
+.month-item.month-completed {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.month-item.month-current {
+  color: #ffffff;
+  font-weight: 600;
 }
 
 .month-item:hover {

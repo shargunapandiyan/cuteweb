@@ -1,11 +1,7 @@
-/* src/components/DateRangePicker/DateRangePicker.css */
-
-/* Wrapper to control positioning */
 .date-range-picker-wrapper {
   position: relative;
 }
 
-/* The main button to open the picker */
 .date-range-toggle {
   background-color: #fff;
   color: #495057;
@@ -25,7 +21,6 @@
   transform: rotate(180deg);
 }
 
-/* The dropdown container */
 .date-range-dropdown {
   position: absolute;
   top: calc(100% + 5px);
@@ -34,11 +29,10 @@
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   display: flex;
 }
 
-/* --- Left side with preset ranges --- */
 .presets {
   display: flex;
   flex-direction: column;
@@ -65,12 +59,10 @@
   color: #fff;
 }
 
-/* --- Wrapper for the calendar to control its layout --- */
 .calendar-container {
-  display: flex; /* Helps contain the calendar component */
+  display: flex;
 }
 
-/* --- Overriding default react-date-range styles --- */
 .rdrDateRangePickerWrapper {
   box-shadow: none !important;
   border: none !important;
@@ -81,72 +73,65 @@
   color: #333 !important;
 }
 .rdrMonth {
-  width: 280px !important; /* Adjust width of each calendar month */
+  width: 280px !important;
 }
 .rdrDayNumber span {
   color: #333 !important;
 }
-.rdrDay:not(.rdrDayPassive) .rdrInRange ~ .rdrDayNumber span,
+rdrDay:not(.rdrDayPassive) .rdrInRange ~ .rdrDayNumber span,
 .rdrDay:not(.rdrDayPassive) .rdrStartEdge ~ .rdrDayNumber span,
 .rdrDay:not(.rdrDayPassive) .rdrEndEdge ~ .rdrDayNumber span {
-  color: #fff !important; /* Make text white on selected dates */
+  color: #fff !important;
 }
-.rdrStartEdge, .rdrEndEdge {
+.rdrStartEdge,
+.rdrEndEdge {
   background: #0d6efd !important;
 }
 .rdrInRange {
-  background: #a3c9ff !important; /* Lighter blue for the range */
+  background: #a3c9ff !important;
 }
 .rdrMonthName {
-  display: none; /* Hide the default month name */
+  display: none;
 }
 
-
-/* --- START: NEW RESPONSIVE STYLES FOR MOBILE --- */
 @media (max-width: 768px) {
   .date-range-toggle {
-    min-width: 0; /* Allow button to shrink */
+    min-width: 0;
   }
 
   .date-range-dropdown {
-    /* Stack presets and calendar vertically */
     flex-direction: column;
-    /* Position full-width on mobile */
     left: 0;
     right: 0;
     width: auto;
   }
 
   .presets {
-    /* Make presets a horizontal, wrapping row on top */
     flex-direction: row;
     flex-wrap: wrap;
-    border-right: none; /* Remove side border */
-    border-bottom: 1px solid #ddd; /* Add bottom border */
+    border-right: none;
+    border-bottom: 1px solid #ddd;
     min-width: 100%;
-    justify-content: center; /* Center the preset buttons */
+    justify-content: center;
   }
 
   .preset-item {
-    flex-grow: 1; /* Allow items to grow and fill space */
-    text-align: center; /* Center text in buttons */
+    flex-grow: 1;
+    text-align: center;
   }
 
   .calendar-container {
     width: 100%;
-    overflow-x: auto; /* Allow scrolling if calendar is still too wide */
+    overflow-x: auto;
   }
 
   .rdrCalendarWrapper {
-    /* Ensure the calendar itself takes available space */
     width: 100% !important;
-    font-size: 0.8rem; /* Slightly smaller font on mobile */
+    font-size: 0.8rem;
   }
 
   .rdrMonth {
-    /* Make the single month view take full width */
     width: 100% !important;
-    padding: 0 10px; /* Add some horizontal padding */
+    padding: 0 10px;
   }
 }
-/* --- END: NEW RESPONSIVE STYLES --- */

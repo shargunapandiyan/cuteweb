@@ -1,0 +1,28 @@
+.search-component-wrapper {
+  width: 100%;
+  max-width: 300px;
+}
+
+.search-component-wrapper .input-group {
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.search-component-wrapper .input-group-text {
+  background-color: #fff;
+
+  border-right: none;
+  border-color: #dee2e6;
+  border-radius: 8px 0 0 8px;
+}
+
+.search-component-wrapper .search-input {
+  border-left: none;
+  border-radius: 0 8px 8px 0 !important;
+  border-color: #dee2e6;
+}
+
+.search-component-wrapper .search-input:focus {
+  box-shadow: none;
+  border-color: #435ebe;
+}

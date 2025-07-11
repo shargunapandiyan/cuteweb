@@ -18,17 +18,17 @@ const Salary = () => {
     endDate: null,
   });
 
-  //It receives the date from the child component.
   const handleRangeChange = (range) => {
     setDateRange(range);
   };
 
+  // --- 1. UPDATED MOCK DATA to match new table columns ---
   const sampleEmployee = {
-    name: "John peter",
+    name: "John Peter",
     id: "#1001",
-    earnings: 1000,
-    deduction: 0,
-    Net: 1000,
+    workHrs: "184 Hrs", // New data field
+    workDays: 23,       // New data field
+    Net: 12500,         // New data field
   };
 
   return (
@@ -46,11 +46,11 @@ const Salary = () => {
           {/* Shift selection */}
           <div className="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3 ">
             <div>
-              <select className="form-select custom-filter-select">
-                <option>-- Shift --</option>
-                <option>Morning Shift</option>
-                <option>Evening Shift</option>
-                <option>Night Shift</option>
+              {/* 2. UPDATED SHIFT OPTIONS */}
+              <select className="form-select custom-filter-select" defaultValue="all">
+                <option value="all">All Shifts</option>
+                <option value="general">General Shift</option>
+                <option value="night">Night Shift</option>
               </select>
             </div>
             <div>
@@ -60,30 +60,27 @@ const Salary = () => {
 
           {/* Salary Table */}
           <div className="table-responsive bg-white rounded-3 shadow-sm">
-            <table className="table table-borderless align-middle salary-table  mb-0">
+            <table className="table table-borderless align-middle salary-table mb-0">
               <thead className="table-header">
                 <tr>
+                  {/* 3. UPDATED TABLE HEADERS */}
                   <th className="p-3">Employee</th>
-                  <th className="text-end p-3">Earnings</th>
-                  <th className="text-end p-3">Deduction</th>
+                  <th className="text-end p-3">Work Hrs</th>
+                  <th className="text-end p-3">Work Days</th>
                   <th className="text-end p-3">Net</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
+                  {/* 4. UPDATED TABLE BODY to match new headers */}
                   <td className="p-3">
                     <div className="employee-id">{sampleEmployee.id}</div>
                     <div className="employee-name-salary">
                       {sampleEmployee.name}
                     </div>
                   </td>
-                  {/* Note: toLocaleString only works on numbers, not strings */}
-                  <td className="text-end p-3">
-                    ₹ {sampleEmployee.earnings.toLocaleString("en-IN")}
-                  </td>
-                  <td className="text-end p-3">
-                    ₹ {sampleEmployee.deduction.toLocaleString("en-IN")}
-                  </td>
+                  <td className="text-end p-3">{sampleEmployee.workHrs}</td>
+                  <td className="text-end p-3">{sampleEmployee.workDays}</td>
                   <td className="text-end p-3">
                     ₹ {sampleEmployee.Net.toLocaleString("en-IN")}
                   </td>
