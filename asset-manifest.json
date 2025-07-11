@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/cuteweb/static/css/main.1289dd1c.css",
-    "main.js": "/cuteweb/static/js/main.a5759c49.js",
+    "main.css": "/cuteweb/static/css/main.568f1d88.css",
+    "main.js": "/cuteweb/static/js/main.46ae7e3f.js",
     "static/js/453.f642a14c.chunk.js": "/cuteweb/static/js/453.f642a14c.chunk.js",
     "static/media/bootstrap-icons.woff?": "/cuteweb/static/media/bootstrap-icons.1295669cd4e305c97f2c.woff",
     "static/media/bootstrap-icons.woff2?": "/cuteweb/static/media/bootstrap-icons.92ea18a81d737146ff04.woff2",
@@ -11,12 +11,12 @@
     "static/media/user.png": "/cuteweb/static/media/user.88b97c6e9a9bb2f970c1.png",
     "static/media/late-hours.png": "/cuteweb/static/media/late-hours.e07ffa28b4d50cc29095.png",
     "index.html": "/cuteweb/index.html",
-    "main.1289dd1c.css.map": "/cuteweb/static/css/main.1289dd1c.css.map",
-    "main.a5759c49.js.map": "/cuteweb/static/js/main.a5759c49.js.map",
+    "main.568f1d88.css.map": "/cuteweb/static/css/main.568f1d88.css.map",
+    "main.46ae7e3f.js.map": "/cuteweb/static/js/main.46ae7e3f.js.map",
     "453.f642a14c.chunk.js.map": "/cuteweb/static/js/453.f642a14c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1289dd1c.css",
-    "static/js/main.a5759c49.js"
+    "static/css/main.568f1d88.css",
+    "static/js/main.46ae7e3f.js"
   ]
 }
