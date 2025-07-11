@@ -1,3 +1,5 @@
+// src/components/DateRangePicker/DateRangePicker.js
+
 import React, { useState, useEffect, useRef } from "react";
 import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css";
@@ -31,6 +33,21 @@ const DateRangePicker = ({ onRangeChange }) => {
       key: "selection",
     },
   ]);
+
+  // --- START: NEW CODE FOR RESPONSIVENESS ---
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+  // --- END: NEW CODE FOR RESPONSIVENESS ---
 
   const ref = useRef(null);
 
@@ -121,25 +138,27 @@ const DateRangePicker = ({ onRangeChange }) => {
               }`}
               onClick={() => {
                 setActivePreset("Custom Range");
-                // Don't change the date, just show the calendar
               }}
             >
               Custom Range
             </button>
           </div>
 
-          {/* --- KEY CHANGE: Only show calendar if 'Custom Range' is active --- */}
           {activePreset === "Custom Range" && (
-            <DateRange
-              onChange={(item) => setState([item.selection])}
-              showSelectionPreview={true}
-              moveRangeOnFirstSelection={false}
-              months={2}
-              ranges={state}
-              direction="horizontal"
-              locale={rdrLocales.enGB}
-              showMonthAndYearPickers={true}
-            />
+            <div className="calendar-container"> {/* Added a wrapper div */}
+              <DateRange
+                onChange={(item) => setState([item.selection])}
+                showSelectionPreview={true}
+                moveRangeOnFirstSelection={false}
+                // --- KEY CHANGE: Use state to control props ---
+                months={isMobile ? 1 : 2}
+                ranges={state}
+                direction={isMobile ? "vertical" : "horizontal"}
+                // --- END KEY CHANGE ---
+                locale={rdrLocales.enGB}
+                showMonthAndYearPickers={true}
+              />
+            </div>
           )}
         </div>
       )}

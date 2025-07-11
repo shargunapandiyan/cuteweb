@@ -1,3 +1,5 @@
+/* src/components/DateRangePicker/DateRangePicker.css */
+
 /* Wrapper to control positioning */
 .date-range-picker-wrapper {
   position: relative;
@@ -63,7 +65,12 @@
   color: #fff;
 }
 
-/* --- Overriding default react-date-range styles to match the image --- */
+/* --- Wrapper for the calendar to control its layout --- */
+.calendar-container {
+  display: flex; /* Helps contain the calendar component */
+}
+
+/* --- Overriding default react-date-range styles --- */
 .rdrDateRangePickerWrapper {
   box-shadow: none !important;
   border: none !important;
@@ -91,5 +98,55 @@
   background: #a3c9ff !important; /* Lighter blue for the range */
 }
 .rdrMonthName {
-  display: none; /* Hide the default month name, we'll use the dropdown */
+  display: none; /* Hide the default month name */
 }
+
+
+/* --- START: NEW RESPONSIVE STYLES FOR MOBILE --- */
+@media (max-width: 768px) {
+  .date-range-toggle {
+    min-width: 0; /* Allow button to shrink */
+  }
+
+  .date-range-dropdown {
+    /* Stack presets and calendar vertically */
+    flex-direction: column;
+    /* Position full-width on mobile */
+    left: 0;
+    right: 0;
+    width: auto;
+  }
+
+  .presets {
+    /* Make presets a horizontal, wrapping row on top */
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-right: none; /* Remove side border */
+    border-bottom: 1px solid #ddd; /* Add bottom border */
+    min-width: 100%;
+    justify-content: center; /* Center the preset buttons */
+  }
+
+  .preset-item {
+    flex-grow: 1; /* Allow items to grow and fill space */
+    text-align: center; /* Center text in buttons */
+  }
+
+  .calendar-container {
+    width: 100%;
+    overflow-x: auto; /* Allow scrolling if calendar is still too wide */
+  }
+
+  .rdrCalendarWrapper {
+    /* Ensure the calendar itself takes available space */
+    width: 100% !important;
+    font-size: 0.8rem; /* Slightly smaller font on mobile */
+  }
+
+  .rdrMonth {
+    /* Make the single month view take full width */
+    width: 100% !important;
+    padding: 0 10px; /* Add some horizontal padding */
+  }
+}
+/* --- END: NEW RESPONSIVE STYLES --- */
