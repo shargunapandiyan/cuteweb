@@ -37,3 +37,11 @@
   font-size: 0.8rem;
   padding: 6px 10px;
 }
+@media (max-width: 576px) {
+  .table {
+    font-size: 13px;
+  }
+  .employee-name {
+    font-weight: 500;
+  }
+}

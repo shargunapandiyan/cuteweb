@@ -136,3 +136,12 @@
 .edit-button:hover {
   background-color: #c7d2fe;
 }
+
+@media (max-width: 576px) {
+  .top-bar-container .btn {
+    padding: 8px 12px;
+  }
+  .table {
+    font-size: 13px;
+  }
+}

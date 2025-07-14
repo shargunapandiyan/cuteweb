@@ -44,7 +44,8 @@ const Salary = () => {
           </div>
 
           <div className="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3 ">
-            <div>
+            
+            <div >
               <select
                 className="form-select custom-filter-select"
                 defaultValue="all"
@@ -64,10 +65,10 @@ const Salary = () => {
             <table className="table table-borderless align-middle salary-table mb-0">
               <thead className="table-header">
                 <tr>
-                  <th className="p-3">Employee</th>
-                  <th className="text-end p-3">Work Hrs</th>
-                  <th className="text-end p-3">Work Days</th>
-                  <th className="text-end p-3">Net</th>
+                  <th className="p-2">Employee</th>
+                  <th className="text-end p-2">Work Hrs</th>
+                  <th className="text-end p-2">Work Days</th>
+                  <th className="text-end p-2">Net</th>
                 </tr>
               </thead>
               <tbody>

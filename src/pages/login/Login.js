@@ -1,6 +1,6 @@
 // src/pages/Login.js
 import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import loginIcon from "../../assets/images/login/login-icon.png";
 import "./Login.css";
@@ -137,7 +137,7 @@ function Login() {
               <div className="invalid-feedback">{errors.username}</div>
             )}
           </div>
-          <div className="mb-4">
+          <div className="mb-3">
             <label className="form-label">Password</label>
             <input
               className={`form-control ${errors.password ? "is-invalid" : ""}`}
@@ -153,6 +153,7 @@ function Login() {
               <div className="invalid-feedback">{errors.password}</div>
             )}
           </div>
+
           <button type="submit" className="btn btn-primary w-100 py-2">
             Login
           </button>

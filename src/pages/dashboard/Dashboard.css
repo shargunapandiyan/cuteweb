@@ -37,3 +37,15 @@
   font-size: 22px;
   color: #212529;
 }
+
+@media (max-width: 576px) {
+  .summary-card strong {
+    font-size: 15px;
+  }
+  .summary-card h6 {
+    font-size: 13px;
+  }
+  .gauge-card {
+    padding: 16px 8px;
+  }
+}

@@ -72,3 +72,21 @@
   background-color: #fee2e2;
   color: #b91c1c;
 }
+
+@media (max-width: 576px) {
+  .employee-table {
+    font-size: 13px;
+  }
+  .employee-table th,
+  .employee-table td {
+    padding: 12px 10px !important;
+  }
+  .action-button {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+  .status-badge {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+}

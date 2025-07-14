@@ -36,3 +36,36 @@
   font-size: 0.85rem;
   color: #6c757d;
 }
+.form-select.custom-filter-select {
+  background-image: none !important;
+  appearance: none;
+  padding-right: 0.75rem !important;
+  min-width: 100px;
+  width: auto;
+  height: calc(2.25rem + 2px); /* match DateRangePicker height if needed */
+}
+@media (max-width: 576px) {
+  /* Reduce font size for the select dropdown and date picker button */
+  .custom-filter-select {
+    font-size: 13px;
+  }
+
+  .date-range-toggle {
+    font-size: 16px;
+  }
+
+  /* Reduce font size for the table header */
+  .salary-table .table-header {
+    font-size: 12px;
+  }
+
+  /* Reduce font size for the table body cells */
+  .salary-table tbody tr td {
+    font-size: 13px;
+  }
+
+  /* Reduce font size for the employee ID in the table */
+  .employee-id {
+    font-size: 12px;
+  }
+}

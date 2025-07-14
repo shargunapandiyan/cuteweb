@@ -18,7 +18,7 @@ const AttendanceGauge = () => {
     },
 
     title: {
-      text: "Distance Meter",
+      text: "Today Attendance",
     },
 
     pane: {
