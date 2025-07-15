@@ -1,3 +1,14 @@
+/* --- NEW Styles for making filters and search full-width on mobile --- */
+.custom-form-control {
+  width: 100%; /* Ensures select/input fields fill their parent column */
+}
+.attendance-container .search-component-wrapper {
+  max-width: 100%; /* Overrides the default max-width of the SearchBar component */
+  width: 100%;
+}
+/* --- END NEW --- */
+
+
 .calendar-popover {
   position: absolute;
   top: 100%;
@@ -8,7 +19,6 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
   margin-top: 2px;
   border: 1px solid #dee2e6;
-  font-size: small;
 }
 
 .rdp {
@@ -20,11 +30,10 @@
 
 @media (max-width: 576px) {
   .rdp {
-    --rdp-cell-size: 36px; /* Slightly smaller on mobile */
+    --rdp-cell-size: 36px;
   }
 }
 
-/*  --- Blinking Animation for Badges --- */
 @keyframes blink-animation {
   50% {
     opacity: 0.3;
@@ -110,13 +119,14 @@
   line-height: 1;
 }
 
+/* This is the existing definition, now with width: 100% added at the top */
 .custom-form-control {
   border: 1px solid #dce0e5;
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  min-width: 130px;
   cursor: pointer;
+  width: 100%;
 }
 .custom-form-control:focus {
   border-color: #435ebe;
@@ -152,7 +162,6 @@
 .edit-button {
   background-color: #e0e7ff;
   color: #3730a3;
-
   padding: 8px;
 }
 
