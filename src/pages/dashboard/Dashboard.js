@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 import "./Dashboard.css";
 
 import Sidebar from "../../components/Sidebar/Sidebar";
@@ -19,6 +20,20 @@ const Dashboard = () => {
 
   // const [attendancePercent, setAttendanePercent] = useState(78); used to fututre remove belwo data
   const [attendancePercent] = useState(78);
+
+  // ---   API binding. ---
+  const summaryData = [
+    { id: 1, title: "Employee", value: 3, image: employee, color: "#e0e7ff" },
+    { id: 2, title: "Present", value: 2, image: present, color: "#dcfce7" },
+    { id: 3, title: "Absent", value: 1, image: absent, color: "#fee2e2" },
+    {
+      id: 4,
+      title: "Late Entry",
+      value: 2,
+      image: late_hours,
+      color: "#fef3c7",
+    },
+  ];
 
   return (
     <div className="page-wrapper">
@@ -43,13 +58,14 @@ const Dashboard = () => {
           </div>
 
           <div className="d-flex justify-content-between align-items-center mb-3">
-            <h5 className="mb-0">Today Attendence Summery</h5>
+            <h6 className="mb-0">Today Attendence Summery</h6>
             <NavLink to="/today">
               <button className="btn btn-primary rounded-pill px-3">
                 view
               </button>
             </NavLink>
           </div>
+
           <div className="row">
             <div className="col-6 col-md-3 mb-3">
               <div className="summary-card text-center p-3">

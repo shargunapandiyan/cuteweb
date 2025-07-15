@@ -1,4 +1,30 @@
-/* --- NEW --- Blinking Animation for Badges --- */
+.calendar-popover {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 1050;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  margin-top: 2px;
+  border: 1px solid #dee2e6;
+  font-size: small;
+}
+
+.rdp {
+  --rdp-cell-size: 40px;
+  --rdp-accent-color: #435ebe;
+  --rdp-background-color: #e0e7ff;
+  margin: 1em;
+}
+
+@media (max-width: 576px) {
+  .rdp {
+    --rdp-cell-size: 36px; /* Slightly smaller on mobile */
+  }
+}
+
+/*  --- Blinking Animation for Badges --- */
 @keyframes blink-animation {
   50% {
     opacity: 0.3;
@@ -6,14 +32,9 @@
 }
 
 .blink-animation {
-  /*
-    animation: name duration timing-function delay iteration-count direction fill-mode;
-  */
   animation: blink-animation 1.5s infinite;
 }
-/* --- END NEW --- */
 
-/* --- Existing styles below --- */
 .page-wrapper {
   display: flex;
   flex-direction: column;
@@ -21,7 +42,6 @@
   overflow-x: hidden;
 }
 
-/* ... (rest of your CSS is perfect and remains unchanged) ... */
 .page-content {
   flex: 1;
   overflow-y: auto;
@@ -40,7 +60,7 @@
 
 .attendance-container {
   background-color: #f0f2f5;
-  min-height: calc(100vh - 130px); /* Adjust based on nav/footer height */
+  min-height: calc(100vh - 130px);
 }
 
 .top-bar-container {
@@ -96,6 +116,7 @@
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   min-width: 130px;
+  cursor: pointer;
 }
 .custom-form-control:focus {
   border-color: #435ebe;
@@ -131,6 +152,8 @@
 .edit-button {
   background-color: #e0e7ff;
   color: #3730a3;
+
+  padding: 8px;
 }
 
 .edit-button:hover {

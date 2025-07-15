@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./Monthly.css";
 
+import SearchBar from "../../components/SearchBar/SearchBar";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
@@ -11,6 +12,8 @@ import MonthYearFilter from "../../components/MonthYearFilter/MonthYearFilter";
 const Monthly = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
+
+  const [searchTerm, setSearchTerm] = useState("");
 
   const sampleEmployee = {
     name: "John",
@@ -29,7 +32,6 @@ const Monthly = () => {
 
       <div className="page-content">
         <div className="container-fluid p-3 p-md-4">
-          
           <div className="mb-3">
             <MonthYearFilter />
           </div>
@@ -37,12 +39,13 @@ const Monthly = () => {
           {/* search bar */}
           <div className="d-flex justify-content-end mb-3">
             <div className="search-wrapper">
-             
-              <input
-                type="text"
-                className="form-control search-input"
-                placeholder="Search name or ID"
-              />
+              {
+                <SearchBar
+                  value={searchTerm}
+                  onChange={setSearchTerm}
+                  placeholder="Search by Name or ID"
+                />
+              }
             </div>
           </div>
           {/* Attendance Table*/}
