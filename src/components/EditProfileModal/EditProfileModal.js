@@ -88,6 +88,7 @@ function EditProfileModal({ show, onHide, onSuccess }) {
                     type="text"
                     id="formName"
                     name="name"
+                    placeholder="Enter Your Name"
                     className={`form-control ${
                       errors.name ? "is-invalid" : ""
                     }`}
@@ -108,6 +109,7 @@ function EditProfileModal({ show, onHide, onSuccess }) {
                     type="text"
                     id="formUsername"
                     name="username"
+                    placeholder="Enter User name"
                     className={`form-control ${
                       errors.username ? "is-invalid" : ""
                     }`}

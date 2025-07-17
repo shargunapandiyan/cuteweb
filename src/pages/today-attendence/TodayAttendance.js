@@ -34,7 +34,10 @@ const TodayAttendance = () => {
 
   useEffect(() => {
     function handleClickOutside(event) {
-      if (datePickerRef.current && !datePickerRef.current.contains(event.target)) {
+      if (
+        datePickerRef.current &&
+        !datePickerRef.current.contains(event.target)
+      ) {
         setCalendarOpen(false);
       }
     }
@@ -73,9 +76,13 @@ const TodayAttendance = () => {
     return activeTab === tabName ? "active-tab-button" : "filter-btn-new";
   };
 
-  const presentCount = allEmployees.filter((e) => e.status === "Present").length;
+  const presentCount = allEmployees.filter(
+    (e) => e.status === "Present"
+  ).length;
   const absentCount = allEmployees.filter((e) => e.status === "Absent").length;
-  const lateEntryCount = allEmployees.filter((e) => e.status === "Late Entry").length;
+  const lateEntryCount = allEmployees.filter(
+    (e) => e.status === "Late Entry"
+  ).length;
 
   const handleEdit = (employeeId) => {
     console.log("Editing employee:", employeeId);
@@ -91,30 +98,54 @@ const TodayAttendance = () => {
   return (
     <div className="page-wrapper">
       <Navbar toggleSidebar={toggleSidebar} />
-      {sidebarOpen && <div className="sidebar-overlay" onClick={toggleSidebar}></div>}
+      {sidebarOpen && (
+        <div className="sidebar-overlay" onClick={toggleSidebar}></div>
+      )}
       <Sidebar isOpen={sidebarOpen} onCloseClick={toggleSidebar} />
       <div className="page-content">
-        <div className="container-fluid attendance-container p-3 p-md-4">
-          <div className="top-bar-container mb-4">
-            <button className={`btn d-flex justify-content-center align-items-center gap-2 flex-grow-1 ${getButtonClass("present")}`} onClick={() => setActiveTab("present")}>
+        <div className="container-fluid attendance-container p-1">
+          <div className="top-bar-container mb-2">
+            <button
+              className={`btn d-flex justify-content-center align-items-center gap-2 flex-grow-1 ${getButtonClass(
+                "present"
+              )}`}
+              onClick={() => setActiveTab("present")}
+            >
               <span>Present</span>
-              <span className="count-badge blink-animation">{presentCount}</span>
+              <span className="count-badge blink-animation">
+                {presentCount}
+              </span>
             </button>
-            <button className={`btn d-flex justify-content-center align-items-center gap-2 flex-grow-1 ${getButtonClass("absent")}`} onClick={() => setActiveTab("absent")}>
+            <button
+              className={`btn d-flex justify-content-center align-items-center gap-2 flex-grow-1 ${getButtonClass(
+                "absent"
+              )}`}
+              onClick={() => setActiveTab("absent")}
+            >
               <span>Absent</span>
               <span className="count-badge blink-animation">{absentCount}</span>
             </button>
-            <button className={`btn d-flex justify-content-center align-items-center gap-2 flex-grow-1 ${getButtonClass("lateentry")}`} onClick={() => setActiveTab("lateentry")}>
+            <button
+              className={`btn d-flex justify-content-center align-items-center gap-2 flex-grow-1 ${getButtonClass(
+                "lateentry"
+              )}`}
+              onClick={() => setActiveTab("lateentry")}
+            >
               <span>Late Entry</span>
-              <span className="count-badge blink-animation">{lateEntryCount}</span>
+              <span className="count-badge blink-animation">
+                {lateEntryCount}
+              </span>
             </button>
           </div>
-          
-          {/* --- CORRECTED RESPONSIVE FILTER SECTION --- */}
-          {/* Row 1: Shift and Date Filters */}
-          <div className="row g-3 mb-3">
+
+          {/* Shift and Date Filters */}
+          <div className="row g-5 mb-2">
             <div className="col-6 col-md-auto">
-              <select className="form-select custom-form-control" value={selectedShift} onChange={(e) => setSelectedShift(e.target.value)}>
+              <select
+                className="form-select custom-form-control"
+                value={selectedShift}
+                onChange={(e) => setSelectedShift(e.target.value)}
+              >
                 <option value="all">-- Shift --</option>
                 <option value="general">General Shift</option>
                 <option value="night">Night Shift</option>
@@ -131,20 +162,29 @@ const TodayAttendance = () => {
                 />
                 {isCalendarOpen && (
                   <div className="calendar-popover">
-                    <DayPicker mode="single" selected={selectedDate} onSelect={handleDateSelect} initialFocus />
+                    <DayPicker
+                      mode="single"
+                      selected={selectedDate}
+                      onSelect={handleDateSelect}
+                      initialFocus
+                    />
                   </div>
                 )}
               </div>
             </div>
           </div>
 
-          {/* Row 2: Search Bar */}
-          <div className="row g-3 mb-4">
+          {/*  Search Bar */}
+          <div className="row g-3 mb-2">
             <div className="col-12">
-              <SearchBar value={searchTerm} onChange={setSearchTerm} placeholder="Search Name or ID" />
+              <SearchBar
+                value={searchTerm}
+                onChange={setSearchTerm}
+                placeholder="Search Name or ID"
+              />
             </div>
           </div>
-          {/* --- END OF CORRECTED SECTION --- */}
+          {/* --- Table --- */}
 
           <div className="table-responsive bg-white rounded-3 shadow-sm">
             <table className="table table-borderless align-middle mb-0">
@@ -173,9 +213,14 @@ const TodayAttendance = () => {
                       <td className="p-3">{emp.id}</td>
                       <td className="p-3">{emp.name}</td>
                       <td className="p-3 text-capitalize">{emp.shift}</td>
-                      {activeTab !== "absent" && <td className="p-3">{emp.time}</td>}
+                      {activeTab !== "absent" && (
+                        <td className="p-3">{emp.time}</td>
+                      )}
                       <td className="p-3 text-center">
-                        <button className="action-button edit-button" onClick={() => handleEdit(emp.id)}>
+                        <button
+                          className="action-button edit-button"
+                          onClick={() => handleEdit(emp.id)}
+                        >
                           <PencilSquare />
                         </button>
                       </td>
@@ -183,7 +228,10 @@ const TodayAttendance = () => {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan={activeTab === "absent" ? "4" : "5"} className="text-center text-muted p-5">
+                    <td
+                      colSpan={activeTab === "absent" ? "4" : "5"}
+                      className="text-center text-muted p-5"
+                    >
                       No data matches your filters.
                     </td>
                   </tr>

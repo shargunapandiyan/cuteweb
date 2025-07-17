@@ -1,13 +1,10 @@
-/* --- NEW Styles for making filters and search full-width on mobile --- */
 .custom-form-control {
-  width: 100%; /* Ensures select/input fields fill their parent column */
-}
-.attendance-container .search-component-wrapper {
-  max-width: 100%; /* Overrides the default max-width of the SearchBar component */
   width: 100%;
 }
-/* --- END NEW --- */
-
+.attendance-container .search-component-wrapper {
+  max-width: 100%;
+  width: 100%;
+}
 
 .calendar-popover {
   position: absolute;
@@ -19,6 +16,7 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
   margin-top: 2px;
   border: 1px solid #dee2e6;
+  font-size: small;
 }
 
 .rdp {
@@ -36,7 +34,7 @@
 
 @keyframes blink-animation {
   50% {
-    opacity: 0.3;
+    opacity: 0.6;
   }
 }
 
@@ -75,15 +73,17 @@
 .top-bar-container {
   background-color: #435ebe;
   border-radius: 12px;
-  padding: 8px;
+  padding: 5px;
   display: flex;
-  gap: 8px;
+  gap: 7px;
 }
 
 .top-bar-container .btn {
   border-radius: 25px !important;
   border: none;
-  font-weight: 600;
+  height: 40px;
+  font-size: small;
+  font-weight: 500;
   padding: 10px 15px;
   transition: all 0.2s ease-in-out;
 }
@@ -119,7 +119,11 @@
   line-height: 1;
 }
 
-/* This is the existing definition, now with width: 100% added at the top */
+.form-select{
+height: 40px !important;
+
+}
+
 .custom-form-control {
   border: 1px solid #dce0e5;
   background-color: #ffffff;
@@ -127,6 +131,7 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   cursor: pointer;
   width: 100%;
+  
 }
 .custom-form-control:focus {
   border-color: #435ebe;

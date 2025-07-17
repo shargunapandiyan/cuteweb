@@ -31,7 +31,7 @@ const Monthly = () => {
       <Sidebar isOpen={sidebarOpen} onCloseClick={toggleSidebar} />
 
       <div className="page-content">
-        <div className="container-fluid p-3 p-md-4">
+        <div className="container-fluid p-1 p-md-4">
           <div className="mb-3">
             <MonthYearFilter />
           </div>
