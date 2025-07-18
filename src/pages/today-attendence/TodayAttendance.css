@@ -46,12 +46,15 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  overflow-x: hidden;
+
+  width: 100%;
+  position: relative;
 }
 
 .page-content {
   flex: 1;
   overflow-y: auto;
+  overflow-x: hidden;
   padding-bottom: 70px;
 }
 
@@ -119,19 +122,15 @@
   line-height: 1;
 }
 
-.form-select{
-height: 40px !important;
-
+.form-select {
+  height: 40px !important;
 }
-
+/* shift and date */
 .custom-form-control {
   border: 1px solid #dce0e5;
-  background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   cursor: pointer;
-  width: 100%;
-  
 }
 .custom-form-control:focus {
   border-color: #435ebe;

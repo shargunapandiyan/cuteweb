@@ -71,10 +71,9 @@ const DateRangePicker = ({ onRangeChange }) => {
   const handlePresetClick = (range, label) => {
     setState([range]);
     setActivePreset(label);
+
     if (label !== "Custom Range") {
-      setIsOpen(false); // Close dropdown if it's a simple preset
-    } else {
-      setIsOpen(true); // Ensure dropdown is open for custom range
+      setIsOpen(false);
     }
   };
 
@@ -104,65 +103,65 @@ const DateRangePicker = ({ onRangeChange }) => {
   ];
 
   return (
-    <div className="date-range-picker-wrapper" ref={ref}>
-      <button className="date-range-toggle" onClick={() => setIsOpen(!isOpen)}>
-        <i className="bi bi-calendar3 me-2"></i>
-        <span>{`${formatDate(state[0].startDate)} - ${formatDate(
-          state[0].endDate
-        )}`}</span>
-        <i
-          className={`bi bi-chevron-down ms-auto transition-transform ${
-            isOpen ? "rotate-180" : ""
-          }`}
-        ></i>
-      </button>
+  <div className="date-range-picker-wrapper" ref={ref}>
+    <button className="date-range-toggle" onClick={() => setIsOpen(!isOpen)}>
+      <i className="bi bi-calendar3 me-2"></i>
+      <span>{`${formatDate(state[0].startDate)} - ${formatDate(
+        state[0].endDate
+      )}`}</span>
+      <i
+        className={`bi bi-chevron-down ms-auto transition-transform ${
+          isOpen ? "rotate-180" : ""
+        }`}
+      ></i>
+    </button>
 
-      {isOpen && (
-        <div className="date-range-dropdown">
-          <div className="presets">
-            {definedRanges.map((preset) => (
-              <button
-                key={preset.label}
-                className={`preset-item ${
-                  activePreset === preset.label ? "active" : ""
-                }`}
-                onClick={() => handlePresetClick(preset.range(), preset.label)}
-              >
-                {preset.label}
-              </button>
-            ))}
+    {isOpen && (
+      <div className="date-range-dropdown">
+        <div className="presets">
+          {definedRanges.map((preset) => (
             <button
+              key={preset.label}
               className={`preset-item ${
-                activePreset === "Custom Range" ? "active" : ""
+                activePreset === preset.label ? "active" : ""
               }`}
-              onClick={() => {
-                setActivePreset("Custom Range");
-              }}
+              onClick={() => handlePresetClick(preset.range(), preset.label)}
             >
-              Custom Range
+              {preset.label}
             </button>
-          </div>
-
-          {activePreset === "Custom Range" && (
-            <div className="calendar-container">
-              {" "}
-              {/* Added a wrapper div */}
-              <DateRange
-                onChange={(item) => setState([item.selection])}
-                showSelectionPreview={true}
-                moveRangeOnFirstSelection={false}
-                months={isMobile ? 1 : 2}
-                ranges={state}
-                direction={isMobile ? "vertical" : "horizontal"}
-                locale={rdrLocales.enGB}
-                showMonthAndYearPickers={true}
-              />
-            </div>
-          )}
+          ))}
+          <button
+            className={`preset-item ${
+              activePreset === "Custom Range" ? "active" : ""
+            }`}
+            onClick={() => {
+              // This button just activates the calendar view
+              setActivePreset("Custom Range");
+            }}
+          >
+            Custom Range
+          </button>
         </div>
-      )}
-    </div>
-  );
+
+        {/* The calendar now appears below the presets inside the same card */}
+        {activePreset === "Custom Range" && (
+          <div className="calendar-container">
+            <DateRange
+              onChange={(item) => setState([item.selection])}
+              showSelectionPreview={true}
+              moveRangeOnFirstSelection={false}
+              months={isMobile ? 1 : 2}
+              ranges={state}
+              direction={isMobile ? "vertical" : "horizontal"}
+              locale={rdrLocales.enGB}
+              showMonthAndYearPickers={true}
+            />
+          </div>
+        )}
+      </div>
+    )}
+  </div>
+);
 };
 
 export default DateRangePicker;

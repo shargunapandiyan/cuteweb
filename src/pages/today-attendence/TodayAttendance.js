@@ -103,7 +103,7 @@ const TodayAttendance = () => {
       )}
       <Sidebar isOpen={sidebarOpen} onCloseClick={toggleSidebar} />
       <div className="page-content">
-        <div className="container-fluid attendance-container p-1">
+        <div className="container-fluid attendance-container p-2">
           <div className="top-bar-container mb-2">
             <button
               className={`btn d-flex justify-content-center align-items-center gap-2 flex-grow-1 ${getButtonClass(
@@ -191,18 +191,18 @@ const TodayAttendance = () => {
               <thead className="table-header">
                 {activeTab === "absent" ? (
                   <tr>
-                    <th className="p-3">ID</th>
-                    <th className="p-3">Name</th>
-                    <th className="p-3">Shift</th>
-                    <th className="p-3 text-center">Action</th>
+                    <th className="p-2">ID</th>
+                    <th className="p-2">Name</th>
+                    <th className="p-2">Shift</th>
+                    <th className="p-2 text-center">Action</th>
                   </tr>
                 ) : (
                   <tr>
-                    <th className="p-3">ID</th>
-                    <th className="p-3">Name</th>
-                    <th className="p-3">Shift</th>
-                    <th className="p-3">Time</th>
-                    <th className="p-3 text-center">Action</th>
+                    <th className="p-2">ID</th>
+                    <th className="p-2">Name</th>
+                    <th className="p-2">Shift</th>
+                    <th className="p-2">Time</th>
+                    <th className="p-2 text-center">Action</th>
                   </tr>
                 )}
               </thead>
@@ -210,13 +210,13 @@ const TodayAttendance = () => {
                 {filteredEmployees.length > 0 ? (
                   filteredEmployees.map((emp) => (
                     <tr key={emp.id}>
-                      <td className="p-3">{emp.id}</td>
-                      <td className="p-3">{emp.name}</td>
-                      <td className="p-3 text-capitalize">{emp.shift}</td>
+                      <td className="p-2">{emp.id}</td>
+                      <td className="p-2">{emp.name}</td>
+                      <td className="p-2 text-capitalize">{emp.shift}</td>
                       {activeTab !== "absent" && (
-                        <td className="p-3">{emp.time}</td>
+                        <td className="p-2">{emp.time}</td>
                       )}
-                      <td className="p-3 text-center">
+                      <td className="p-2 text-center">
                         <button
                           className="action-button edit-button"
                           onClick={() => handleEdit(emp.id)}

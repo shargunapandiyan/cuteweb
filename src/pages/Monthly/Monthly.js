@@ -32,12 +32,12 @@ const Monthly = () => {
 
       <div className="page-content">
         <div className="container-fluid p-1 p-md-4">
-          <div className="mb-3">
+          <div className="mb-2">
             <MonthYearFilter />
           </div>
 
           {/* search bar */}
-          <div className="d-flex justify-content-end mb-3">
+          <div className="d-flex justify-content-end mb-2">
             <div className="search-wrapper">
               {
                 <SearchBar
@@ -53,10 +53,10 @@ const Monthly = () => {
             <table className="table table-borderless align-middle mb-0">
               <thead className="table-header">
                 <tr>
-                  <th className="p-3">Name</th>
-                  <th className="text-center p-3">Days</th>
-                  <th className="text-center p-3">Present</th>
-                  <th className="text-center p-3">Absent</th>
+                  <th className="p-2">Name</th>
+                  <th className="text-center p-2">Days</th>
+                  <th className="text-center p-2">Present</th>
+                  <th className="text-center p-2">Absent</th>
                 </tr>
               </thead>
               <tbody>
