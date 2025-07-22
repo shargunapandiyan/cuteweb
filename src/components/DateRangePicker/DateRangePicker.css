@@ -1,0 +1,108 @@
+.date-range-picker-wrapper {
+  position: relative;
+}
+
+.date-range-toggle {
+  background-color: #fff;
+  color: #495057;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  padding: 0.375rem 0.75rem;
+  width: 100%;
+  height: 38px;
+}
+.transition-transform {
+  transition: transform 0.2s ease-in-out;
+}
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+/* --- THE NEW UNIFIED DROPDOWN STYLE --- */
+.date-range-dropdown {
+  position: absolute;
+  top: calc(100% + 5px);
+  right: 0;
+  z-index: 900; /* Stays behind the footer */
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  /* The key change: a single column layout */
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- PRESETS CONTAINER --- */
+.presets {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  border-bottom: 1px solid #e9ecef; /* Separator line */
+}
+.preset-item {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.preset-item:hover {
+  background-color: #f8f9fa;
+}
+.preset-item.active {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
+/* --- CALENDAR CONTAINER --- */
+.calendar-container {
+  display: flex; /* Allows for two months side-by-side on desktop */
+}
+
+/* --- Overrides for the react-date-range library --- */
+.rdrDateRangePickerWrapper,
+.rdrCalendarWrapper,
+.rdrMonth {
+  background: none !important;
+}
+.rdrMonth {
+  width: 280px !important; /* A more compact width */
+}
+.rdrMonthName {
+  display: none;
+}
+.rdrDayNumber span {
+  color: #333 !important;
+}
+.rdrDay:not(.rdrDayPassive) .rdrInRange ~ .rdrDayNumber span,
+.rdrDay:not(.rdrDayPassive) .rdrStartEdge ~ .rdrDayNumber span,
+.rdrDay:not(.rdrDayPassive) .rdrEndEdge ~ .rdrDayNumber span {
+  color: #fff !important;
+}
+.rdrStartEdge,
+.rdrEndEdge {
+  background: #0d6efd !important;
+}
+.rdrInRange {
+  background: #a3c9ff !important;
+}
+
+/* --- MOBILE RESPONSIVE STYLES --- */
+@media (max-width: 768px) {
+  .date-range-dropdown {
+    right: 0;
+    left: auto;
+    width: 95vw;
+    max-width: 340px;
+  }
+  .rdrMonth {
+    width: auto !important; /* Let it be flexible */
+  }
+}

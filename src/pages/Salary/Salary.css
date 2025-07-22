@@ -1,0 +1,130 @@
+/* --- Filter & Table Wrapper --- */
+.salary-content-wrapper {
+  background-color: #f8f9fa !important; /* Matches Bootstrap's .bg-light */
+}
+
+/* --- Custom Select Dropdown --- */
+.custom-select-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 6px; /* Slightly softer radius */
+  width: 100%;
+  height: 38px;
+  padding: 0 12px;
+  cursor: pointer;
+}
+
+.custom-select-underlay {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  background: transparent;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Style for the "--Shift--" placeholder text */
+.custom-select-underlay:required:invalid {
+  color: #6c757d;
+}
+option {
+  color: #212529; /* Regular text color for options */
+}
+
+.custom-select-underlay:focus {
+  outline: none;
+}
+
+.select-arrow {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #6c757d;
+}
+
+/* --- Date Range Picker (to match the design) --- */
+.date-range-toggle {
+  background-color: #fff !important;
+  color: #495057;
+  border: 1px solid #ced4da !important;
+  border-radius: 6px !important; /* Match the select dropdown */
+  text-align: left;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 0; /* Allow it to be flexible */
+  justify-content: flex-start; /* Align content to the left */
+  padding: 0 12px !important;
+}
+
+/* Adds the calendar icon */
+.date-range-toggle::before {
+  font-family: "bootstrap-icons";
+  content: "\f22e"; /* Bootstrap icon for calendar-event */
+  color: #495057;
+  font-size: 1rem;
+  margin-right: 8px;
+}
+
+/* --- Table Styles --- */
+.salary-table .table-header {
+  background-color: transparent; /* Inherits from the parent wrapper */
+  color: #6c757d;
+  font-size: 14px;
+  font-weight: 600;
+}
+.salary-table tbody tr td {
+  border-top: 1px solid #dee2e6; /* A slightly more visible border like the image */
+  font-size: 15px;
+  background-color: #fff; /* White background for table rows */
+}
+/* No border for the first row of data */
+.salary-table tbody tr:first-child td {
+  border-top: none;
+}
+.employee-name-salary {
+  font-weight: 500;
+  color: #d9534f;
+}
+.employee-id {
+  font-size: 13px;
+  color: #6c757d;
+}
+
+/* --- Footer --- */
+.footer {
+  /* This ensures the footer stays above scrolling content */
+  z-index: 900;
+}
+
+/* --- Mobile Responsive Styles --- */
+@media (max-width: 576px) {
+  .custom-select-underlay,
+  .date-range-toggle {
+    font-size: 13px;
+  }
+
+  .date-range-toggle {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .salary-table .table-header {
+    font-size: 12px;
+  }
+  .salary-table tbody tr td {
+    font-size: 13px;
+  }
+  .employee-id {
+    font-size: 12px;
+  }
+}

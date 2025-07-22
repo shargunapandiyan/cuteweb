@@ -1,0 +1,111 @@
+.page-wrapper {
+  position: relative;
+}
+
+.sync-button-header {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  z-index: 1035;
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  font-weight: 500;
+}
+.sync-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 400;
+}
+
+.page-content .search-component-wrapper {
+  max-width: none;
+  width: 100%;
+}
+
+.table-card {
+  padding: 1px 0;
+  border: none;
+}
+
+.employee-table {
+  margin-bottom: 0;
+}
+
+.employee-table th,
+.employee-table td {
+  vertical-align: middle;
+  padding: 16px 24px !important;
+  border-top: 1px solid #f1f1f1 !important;
+}
+
+.employee-table th {
+  color: #6c757d;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-top: none !important;
+}
+
+/* ststus badge */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 13px;
+}
+.status-badge.active {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.status-badge.inactive {
+  background-color: #d1fae5;
+  color: red;
+}
+
+.status-badge .icon {
+  margin-right: 2px;
+}
+
+/* action button */
+.action-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-weight: 200;
+  font-size: 13px;
+  border: none;
+}
+.edit-button {
+  background-color: #e0e7ff;
+  color: #3730a3;
+}
+
+.delete-button {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+@media (max-width: 576px) {
+  .employee-table {
+    font-size: 12.5px;
+  }
+  .employee-table th,
+  .employee-table td {
+    padding: 2px 6px !important;
+  }
+  .action-button {
+    padding: 3px 5px;
+    font-size: 12px;
+  }
+  .status-badge {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+}

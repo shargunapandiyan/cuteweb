@@ -1,0 +1,75 @@
+.month-filter-bar {
+  background-color: #435ebe;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.year-selector {
+  padding-right: 15px;
+  border-right: 2px solid rgba(245, 236, 236, 0.959);
+}
+.year-dropdown {
+  background-color: transparent;
+  color: white;
+  border: none;
+  font-weight: 600;
+  padding-right: 2rem;
+}
+.year-dropdown:focus {
+  background-color: transparent;
+  color: white;
+  box-shadow: none;
+}
+.year-dropdown option {
+  color: #000;
+}
+
+.month-list {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-grow: 1;
+  overflow-x: auto;
+  justify-content: flex-start;
+  scrollbar-width: none;
+  padding: 4px 0;
+}
+.month-list::-webkit-scrollbar {
+  display: none;
+}
+
+.month-item {
+  background: none;
+  border: none;
+
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+  padding: 5px 15px;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+  flex-shrink: 0;
+}
+
+.month-item.month-completed {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.month-item.month-current {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.month-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.month-item.active {
+  color: white;
+  font-weight: 700;
+  background-color: rgba(0, 0, 0, 0.2);
+}

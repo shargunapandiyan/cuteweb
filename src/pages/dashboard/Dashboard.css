@@ -1,0 +1,51 @@
+.page-wrapper {
+  overflow-x: hidden;
+}
+
+.page-content {
+  background-color: #f4f7fc;
+  padding-bottom: 70px;
+}
+
+/* Gauge card */
+.gauge-card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 24px 16px;
+}
+
+.summary-card {
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.summary-card:hover {
+  transform: translate(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.summary-card h6 {
+  color: #6c757d;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.summary-card strong {
+  font-size: 22px;
+  color: #212529;
+}
+
+@media (max-width: 576px) {
+  .summary-card strong {
+    font-size: 15px;
+  }
+  .summary-card h6 {
+    font-size: 13px;
+  }
+  .gauge-card {
+    padding: 16px 8px;
+  }
+}

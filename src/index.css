@@ -1,0 +1,79 @@
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+
+  h1,
+  .h1 {
+    font-size: 26px;
+  }
+  h2,
+  .h2 {
+    font-size: 24px;
+  }
+  h3,
+  .h3 {
+    font-size: 21px;
+  }
+  h4,
+  .h4 {
+    font-size: 18px;
+  }
+  h5,
+  .h5 {
+    font-size: 16px;
+  }
+  h6,
+  .h6 {
+    font-size: 14px;
+  }
+
+  .form-control,
+  .btn,
+  .form-label,
+  p {
+    font-size: 14px;
+  }
+}
+
+/* less than 576px  */
+@media (max-width: 576px) {
+  body {
+    font-size: 14px;
+  }
+
+  h1,
+  .h1 {
+    font-size: 24px;
+  }
+  h2,
+  .h2 {
+    font-size: 22px;
+  }
+  h3,
+  .h3 {
+    font-size: 19px;
+  }
+  h4,
+  .h4 {
+    font-size: 17px;
+  }
+  h5,
+  .h5 {
+    font-size: 15px;
+  }
+
+  .form-control,
+  .btn,
+  .form-label {
+    font-size: 14px;
+  }
+
+  .table {
+    font-size: 13px;
+  }
+}
+
+
+
+
