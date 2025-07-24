@@ -1,24 +1,21 @@
-// --- Imports ---
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./Profile.css";
 
-// --- Layout & Child Component Imports ---
 import Navbar from "../../components/Navbar/Navbar";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Footer from "../../components/Footer/Footer";
 import EditProfileModal from "../../components/EditProfileModal/EditProfileModal";
-import ToastNotification from "../../components/ToastNotification/ToastNotification"; // <-- 1. Import the Toast component
+import ToastNotification from "../../components/ToastNotification/ToastNotification";
+import User from "../../assets/images/sidebar/user.png";
 
-// --- Icon Imports ---
 import {
-  PersonFill,
-  Pencil,
   LayersFill,
   WalletFill,
   PersonCircle,
   BoxArrowRight,
   ChevronRight,
+  Pencil,
 } from "react-bootstrap-icons";
 
 function Profile() {
@@ -28,7 +25,6 @@ function Profile() {
   const [showEditModal, setShowEditModal] = useState(false);
   const navigate = useNavigate();
 
-  // --- 2. ADD STATE FOR THE TOAST NOTIFICATION ---
   const [toast, setToast] = useState({ show: false, message: "", type: "" });
 
   const handleLogout = () => {
@@ -37,10 +33,9 @@ function Profile() {
     });
   };
 
-  // --- 3. CREATE A FUNCTION TO HANDLE THE SUCCESS MESSAGE FROM THE MODAL ---
   const handleProfileUpdateSuccess = (message) => {
-    setShowEditModal(false); // First, close the modal
-    setToast({ show: true, message: message, type: "success" }); // Then, show the toast
+    setShowEditModal(false);
+    setToast({ show: true, message: message, type: "success" });
   };
 
   return (
@@ -52,17 +47,16 @@ function Profile() {
       <Sidebar isOpen={sidebarOpen} onCloseClick={toggleSidebar} />
 
       <div className="page-content profile-page-content">
-        {/* ... All your other profile content remains the same ... */}
         <div className="container-fluid p-3 p-md-4">
-          <div className="profile-card">
-            {/* Header, Quick Actions, Settings List etc. */}
+          <div className="profile-card animate-fade-in-up">
             <header className="profile-header">
               <div className="avatar">
-                <PersonFill />
+                
+                <img src={User} alt="User Avatar" />
               </div>
               <div className="user-info">
                 <h4>CuteWeb</h4>
-                <p>CuteWeb</p>
+                <p>Developer</p>
               </div>
               <button
                 className="btn edit-profile-btn"
@@ -71,22 +65,28 @@ function Profile() {
                 <Pencil />
               </button>
             </header>
+
             <div className="p-3">
               <div className="row g-3">
                 <div className="col-6">
                   <NavLink to="/today" className="quick-action-card">
-                    <LayersFill className="icon" />
+                    <div className="quick-action-icon-wrapper bg-primary-light">
+                      <LayersFill className="icon text-primary" />
+                    </div>
                     <span>Attendance</span>
                   </NavLink>
                 </div>
                 <div className="col-6">
                   <NavLink to="/salary" className="quick-action-card">
-                    <WalletFill className="icon" />
+                    <div className="quick-action-icon-wrapper bg-success-light">
+                      <WalletFill className="icon text-success" />
+                    </div>
                     <span>Salary</span>
                   </NavLink>
                 </div>
               </div>
             </div>
+
             <div className="settings-section">
               <h6 className="settings-section-title">Account Settings</h6>
               <ul className="settings-list">
@@ -99,8 +99,8 @@ function Profile() {
                   <ChevronRight className="settings-chevron" />
                 </li>
                 <li className="settings-item" onClick={handleLogout}>
-                  <BoxArrowRight className="settings-icon" />
-                  <span>Log Out</span>
+                  <BoxArrowRight className="settings-icon text-danger" />
+                  <span className="text-danger">Log Out</span>
                   <ChevronRight className="settings-chevron" />
                 </li>
               </ul>
@@ -111,14 +111,12 @@ function Profile() {
 
       <Footer />
 
-      {/* --- 4. PASS THE NEW FUNCTION AS A PROP TO THE MODAL --- */}
       <EditProfileModal
         show={showEditModal}
         onHide={() => setShowEditModal(false)}
-        onSuccess={handleProfileUpdateSuccess} // Pass the success handler
+        onSuccess={handleProfileUpdateSuccess}
       />
 
-      {/* --- 5. RENDER THE TOAST COMPONENT --- */}
       <ToastNotification
         show={toast.show}
         message={toast.message}

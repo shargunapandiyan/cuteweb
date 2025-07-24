@@ -1,56 +1,102 @@
+/* --- Animation Keyframes --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* --- Page & Card Styling --- */
 .profile-page-content {
-  background-color: #f4f7fc;
+  background-color: #f8f9fa;
 }
 
 .profile-card {
   background-color: white;
-  border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+
+  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecef;
   overflow: hidden;
   margin-top: 20px;
 }
 
+/* --- Profile Header --- */
 .profile-header {
   display: flex;
   align-items: center;
   padding: 24px;
   gap: 20px;
+  border-bottom: 1px solid #e9ecef;
+  background: linear-gradient(135deg, #fdfcff 0%, #f3f5ff 100%);
 }
 
 .avatar {
   width: 72px;
   height: 72px;
   border-radius: 50%;
-  background-color: #0d6efd;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 36px;
+  flex-shrink: 0;
+
+  border: 3px solid #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .user-info h4 {
-  margin-bottom: 4px;
-  font-weight: 600;
+  margin-bottom: 2px;
+  font-weight: 700;
+  color: #212529;
 }
 .user-info p {
   margin-bottom: 0;
   color: #6c757d;
+  font-size: 0.9rem;
 }
 
 .edit-profile-btn {
   margin-left: auto;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  border: 1px solid #dee2e6;
+  border-radius: 12px;
+  width: auto;
+  padding: 8px 12px;
+  border: 1px solid #ced4da;
   color: #495057;
-  background-color: transparent;
+  background-color: #fff;
+  transition: all 0.2s ease;
 }
 .edit-profile-btn:hover {
-  background-color: #f8f9fa;
+  background-color: #435ebe;
+  color: #fff;
+  border-color: #435ebe;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(67, 94, 190, 0.2);
 }
 
+/* --- Quick Action Cards --- */
 .quick-action-card {
   display: flex;
   flex-direction: column;
@@ -58,30 +104,53 @@
   justify-content: center;
   text-align: center;
   padding: 20px;
-  background-color: #f8f9fa;
-  border-radius: 12px;
+  background-color: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 16px;
   text-decoration: none;
-  color: #212529;
-  font-weight: 500;
-  transition: background-color 0.2s, transform 0.2s;
+  color: #343a40;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 .quick-action-card:hover {
-  background-color: #e9ecef;
-  transform: translateY(-2px);
-}
-.quick-action-card .icon {
-  font-size: 24px;
-  margin-bottom: 8px;
-  color: #0d6efd;
+  transform: translateY(-5px);
+  box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.1);
+  border-color: #435ebe;
 }
 
+.quick-action-icon-wrapper {
+  width: 50px;
+  height: 50px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+.quick-action-card .icon {
+  font-size: 22px;
+}
+.bg-primary-light {
+  background-color: rgba(67, 94, 190, 0.1);
+}
+.text-primary {
+  color: #435ebe !important;
+}
+.bg-success-light {
+  background-color: rgba(25, 135, 84, 0.1);
+}
+.text-success {
+  color: #198754 !important;
+}
+
+/* --- Settings Section --- */
 .settings-section-title {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
-  color: #6c757d;
+  color: #adb5bd;
   text-transform: uppercase;
-  padding: 16px 24px 8px;
-  margin-top: 16px;
+  letter-spacing: 0.5px;
+  padding: 24px 24px 8px;
 }
 
 .settings-list {
@@ -95,28 +164,51 @@
   align-items: center;
   padding: 16px 24px;
   cursor: pointer;
-  border-top: 1px solid #f1f1f1;
-  transition: background-color 0.2s;
-  text-decoration: none;
-  color: inherit;
+  border-top: 1px solid #e9ecef;
+  transition: all 0.2s ease;
+  opacity: 0;
+  animation: slideInFromLeft 0.5s ease-out forwards;
 }
+
+.settings-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.settings-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
 .settings-item:hover {
   background-color: #f8f9fa;
+  color: #435ebe;
 }
+.settings-item:hover .settings-icon,
+.settings-item:hover .settings-chevron {
+  color: #435ebe;
+}
+
+.settings-item:has(.text-danger):hover {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+.settings-item:has(.text-danger):hover .settings-icon,
+.settings-item:has(.text-danger):hover .settings-chevron {
+  color: #b91c1c;
+}
+
 .settings-icon {
   font-size: 20px;
-  color: #495057;
+  color: #6c757d;
   margin-right: 16px;
+  transition: color 0.2s ease;
 }
 .settings-chevron {
   font-size: 16px;
   color: #adb5bd;
   margin-left: auto;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
-
-.modal-header,
-.modal-footer {
-  border: none;
+.settings-item:hover .settings-chevron {
+  transform: translateX(5px);
 }
 
 @media (max-width: 576px) {
@@ -127,7 +219,6 @@
   .avatar {
     width: 60px;
     height: 60px;
-    font-size: 28px;
   }
   .quick-action-card {
     padding: 16px;
