@@ -2,13 +2,20 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./EditEmployee.css";
 
-// Import your layout components
+// Import layout components
 import Navbar from "../../components/Navbar/Navbar";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Footer from "../../components/Footer/Footer";
+import { employeeData } from "../../data/employee/Employee";
 
-// FIX 2: Ensure this import path is correct and it's your single source of truth for employee data
-import { employeeData } from "../../data/employee/Employee"; 
+// --- UPDATED: Imported new icons for the form fields ---
+import {
+  Person,
+  Layers,
+  CashCoin,
+  Check2Circle,
+  XCircle,
+} from "react-bootstrap-icons";
 
 function EditEmployee() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -17,20 +24,18 @@ function EditEmployee() {
   const { employeeId } = useParams();
   const navigate = useNavigate();
 
+  // --- Core logic remains 100% the same ---
   const [formData, setFormData] = useState({
+    id: "", // Add id to state to display it in the header
     shift: "",
     name: "",
     basicSalary: "",
   });
 
-  // When the component loads, find the employee and pre-fill the form
   useEffect(() => {
-    // FIX 2: The find logic is now robust. It compares the ID from the URL ('1001')
-    // with the ID in the data ('#1001'), ignoring the '#'.
     const employeeToEdit = employeeData.find(
       (emp) => emp.id.replace("#", "") === employeeId
     );
-
     if (employeeToEdit) {
       setFormData(employeeToEdit);
     } else {
@@ -49,32 +54,27 @@ function EditEmployee() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // IMPROVEMENT: Update the master data array
-    // This makes the change visible when you navigate back.
-    // NOTE: In a real app, an API call would go here. This is for client-side simulation.
     const employeeIndex = employeeData.findIndex(
       (emp) => emp.id.replace("#", "") === employeeId
     );
     if (employeeIndex !== -1) {
-      employeeData[employeeIndex] = { ...employeeData[employeeIndex], ...formData };
-      console.log("Updated Employee Data Source:", employeeData);
+      employeeData[employeeIndex] = {
+        ...employeeData[employeeIndex],
+        ...formData,
+      };
     }
-
-    // IMPROVEMENT 2: Pass a success message back to the employee list page
-    // This allows you to show a success toast instead of a blocking alert.
-    navigate("/employee", { 
-      state: { 
+    navigate("/employee", {
+      state: {
         message: `Successfully updated ${formData.name}.`,
-        status: 'success'
-      } 
+        status: "success",
+      },
     });
   };
 
-  // FIX 1: Add the missing handleCancel function
   const handleCancel = () => {
-    navigate("/employee"); // Go back without saving
+    navigate("/employee");
   };
+  // --- End of core logic ---
 
   return (
     <div className="page-wrapper">
@@ -86,70 +86,101 @@ function EditEmployee() {
 
       <div className="page-content">
         <div className="container-fluid p-3 p-md-4">
-          <div className="edit-form-card">
-            <form onSubmit={handleSubmit}>
-              {/* --- Shift Field (as a dropdown) --- */}
-              <div className="form-group">
-                <label htmlFor="shift" className="form-label">
-                  Shift
-                </label>
-                <select
-                  id="shift"
-                  name="shift"
-                  className="form-control"
-                  value={formData.shift}
-                  onChange={handleChange}
-                >
-                  <option value="Morning Shift">Morning Shift</option>
-                  <option value="Evening Shift">Evening Shift</option>
-                  <option value="Night Shift">Night Shift</option>
-                </select>
-              </div>
+          {/* --- The main card with entry animation --- */}
+          <div className="edit-form-card animate-fade-in-up">
+            {/* --- NEW: A clear header for context --- */}
+            <div className="card-header-custom">
+              <h4 className="card-title-custom">Edit Employee Details</h4>
+              <p className="card-subtitle-custom">
+                Updating record for {formData.id}
+              </p>
+            </div>
 
-              {/* --- Employee Name Field --- */}
-              <div className="form-group">
-                <label htmlFor="name" className="form-label">
-                  Employee Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  className="form-control"
-                  value={formData.name}
-                  onChange={handleChange}
-                />
-              </div>
+            <div className="card-body-custom">
+              <form onSubmit={handleSubmit}>
+                <div className="row">
+                  {/* --- Employee Name Field --- */}
+                  <div className="col-md-6 form-group-animated">
+                    <label htmlFor="name" className="form-label">
+                      Employee Name
+                    </label>
+                    <div className="input-group">
+                      <span className="input-group-text">
+                        <Person />
+                      </span>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        className="form-control"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                  </div>
 
-              {/* --- Salary Field --- */}
-              <div className="form-group">
-                <label htmlFor="basicSalary" className="form-label">
-                  Salary
-                </label>
-                <input
-                  type="number"
-                  id="basicSalary"
-                  name="basicSalary"
-                  className="form-control"
-                  value={formData.basicSalary}
-                  onChange={handleChange}
-                />
-              </div>
+                  {/* --- Shift Field --- */}
+                  <div className="col-md-6 form-group-animated">
+                    <label htmlFor="shift" className="form-label">
+                      Shift
+                    </label>
+                    <div className="input-group">
+                      <span className="input-group-text">
+                        <Layers />
+                      </span>
+                      <select
+                        id="shift"
+                        name="shift"
+                        className="form-select"
+                        value={formData.shift}
+                        onChange={handleChange}
+                      >
+                        <option value="General Shift">General Shift</option>
+                        <option value="Night Shift">Night Shift</option>
+                      </select>
+                    </div>
+                  </div>
 
-              {/* --- Action Buttons --- */}
-              <div className="form-actions">
-                <button
-                  type="button"
-                  className="btn btn-outline-primary"
-                  onClick={handleCancel} // This will now work correctly
-                >
-                  Cancel
-                </button>
-                <button type="submit" className="btn btn-primary">
-                  Submit
-                </button>
-              </div>
-            </form>
+                  {/* --- Salary Field --- */}
+                  <div className="col-md-12 form-group-animated">
+                    <label htmlFor="basicSalary" className="form-label">
+                      Salary (₹)
+                    </label>
+                    <div className="input-group">
+                      <span className="input-group-text">
+                        <CashCoin />
+                      </span>
+                      <input
+                        type="number"
+                        id="basicSalary"
+                        name="basicSalary"
+                        className="form-control"
+                        value={formData.basicSalary}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* --- Action Buttons --- */}
+                <div className="form-actions">
+                  <button
+                    type="button"
+                    className="btn btn-secondary-custom"
+                    onClick={handleCancel}
+                  >
+                    <XCircle className="me-2" />
+                    Cancel
+                  </button>
+                  <button type="submit" className="btn btn-primary-custom">
+                    <Check2Circle className="me-2" />
+                    Save Changes
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>

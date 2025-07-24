@@ -14,6 +14,7 @@ import {
   CheckCircleFill,
   PencilSquare,
   Trash,
+  ChevronRight,
 } from "react-bootstrap-icons";
 
 import { employeeData } from "../../data/employee/Employee";
@@ -27,6 +28,8 @@ function Employee() {
 
   const [employees, setEmployees] = useState(employeeData);
   const [searchTerm, setSearchTerm] = useState("");
+
+  const [expandedRowId, setExpandedRowId] = useState(null);
 
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [employeeToDelete, setEmployeeToDelete] = useState(null);
@@ -43,6 +46,10 @@ function Employee() {
       window.history.replaceState({}, document.title);
     }
   }, [location]);
+
+  const handleRowClick = (employeeId) => {
+    setExpandedRowId(expandedRowId === employeeId ? null : employeeId);
+  };
 
   const handleEdit = (employeeId) => {
     const id = employeeId.replace("#", "");
@@ -111,44 +118,101 @@ function Employee() {
                     <th>Name</th>
                     <th>Shift</th>
                     <th>Status</th>
-                    <th>Basic Salary</th>
-                    <th className="text-center">Action</th>
+                    <th className="desktop-only-cell">Basic Salary</th>
+                    <th className="text-center desktop-only-cell">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredEmployees && filteredEmployees.length > 0 ? (
+                  {filteredEmployees.length > 0 ? (
                     filteredEmployees.map((employee) => (
-                      <tr key={employee.id}>
-                        <td>{employee.id}</td>
-                        <td>{employee.name}</td>
-                        <td>{employee.shift}</td>
-                        <td>
-                          <span
-                            className={`status-badge ${employee.status.toLowerCase()}`}
-                          >
-                            <CheckCircleFill className="icon" />
-                            {employee.status.charAt(0).toUpperCase() +
-                              employee.status.slice(1)}
-                          </span>
-                        </td>
-                        <td>
-                          Rs.{parseInt(employee.basicSalary).toLocaleString()}/-
-                        </td>
-                        <td className="text-center">
-                          <button
-                            className="action-button edit-button me-2"
-                            onClick={() => handleEdit(employee.id)}
-                          >
-                            <PencilSquare /> <span>Edit</span>
-                          </button>
-                          <button
-                            className="action-button delete-button"
-                            onClick={() => handleDeleteClick(employee)}
-                          >
-                            <Trash /> <span>Delete</span>
-                          </button>
-                        </td>
-                      </tr>
+                      <React.Fragment key={employee.id}>
+                        <tr
+                          className={`main-row ${
+                            expandedRowId === employee.id ? "is-expanded" : ""
+                          }`}
+                          onClick={() => handleRowClick(employee.id)}
+                        >
+                          <td>
+                            <div className="employee-id-cell">
+                              <ChevronRight className="expand-icon" />
+                              {employee.id}
+                            </div>
+                          </td>
+                          <td>{employee.name}</td>
+                          <td>{employee.shift}</td>
+                          <td>
+                            <span
+                              className={`status-badge ${employee.status.toLowerCase()}`}
+                            >
+                              <CheckCircleFill className="icon" />
+                              {employee.status}
+                            </span>
+                          </td>
+                          <td className="desktop-only-cell">
+                            Rs.
+                            {parseInt(employee.basicSalary).toLocaleString()}/-
+                          </td>
+                          <td className="text-center desktop-only-cell">
+                            <button
+                              className="action-button edit-button me-2"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleEdit(employee.id);
+                              }}
+                            >
+                              <PencilSquare /> <span>Edit</span>
+                            </button>
+                            <button
+                              className="action-button delete-button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleDeleteClick(employee);
+                              }}
+                            >
+                              <Trash /> <span>Delete</span>
+                            </button>
+                          </td>
+                        </tr>
+                        <tr className="mobile-details-row">
+                          <td colSpan="4">
+                            <div className="mobile-details-content">
+                              <div className="detail-item">
+                                <strong>Basic Salary:</strong>
+                                <span>
+                                  Rs.
+                                  {parseInt(
+                                    employee.basicSalary
+                                  ).toLocaleString()}
+                                  /-
+                                </span>
+                              </div>
+                              <div className="detail-item">
+                                <strong>Actions:</strong>
+                                <div className="actions-group">
+                                  <button
+                                    className="action-button edit-button me-2"
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      handleEdit(employee.id);
+                                    }}
+                                  >
+                                    <PencilSquare /> <span>Edit</span>
+                                  </button>
+                                  <button
+                                    className="action-button delete-button"
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      handleDeleteClick(employee);
+                                    }}
+                                  >
+                                    <Trash /> <span>Delete</span>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      </React.Fragment>
                     ))
                   ) : (
                     <tr>
@@ -163,7 +227,6 @@ function Employee() {
           </div>
         </div>
       </div>
-
       <ConfirmationModal
         show={showConfirmModal}
         onHide={() => setShowConfirmModal(false)}
@@ -171,7 +234,6 @@ function Employee() {
         title="Confirm Deletion"
         body={`Are you sure you want to delete ${employeeToDelete?.name}? This action cannot be undone.`}
       />
-
       <ToastNotification
         show={toast.show}
         onClose={() => setToast({ ...toast, show: false })}

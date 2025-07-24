@@ -12,12 +12,6 @@
   gap: 1px;
   font-weight: 500;
 }
-.sync-button {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 400;
-}
 
 .page-content .search-component-wrapper {
   max-width: none;
@@ -48,7 +42,6 @@
   border-top: none !important;
 }
 
-/* ststus badge */
 .status-badge {
   display: inline-flex;
   align-items: center;
@@ -57,21 +50,21 @@
   font-weight: 500;
   font-size: 13px;
 }
+
 .status-badge.active {
   background-color: #d1fae5;
   color: #065f46;
 }
 
 .status-badge.inactive {
-  background-color: #d1fae5;
-  color: red;
+  background-color: #fee2e2;
+  color: #b91c1c;
 }
 
 .status-badge .icon {
   margin-right: 2px;
 }
 
-/* action button */
 .action-button {
   display: inline-flex;
   align-items: center;
@@ -82,6 +75,7 @@
   font-size: 13px;
   border: none;
 }
+
 .edit-button {
   background-color: #e0e7ff;
   color: #3730a3;
@@ -92,13 +86,84 @@
   color: #b91c1c;
 }
 
-@media (max-width: 576px) {
+/* --- Mobile Expandable Row Styles --- */
+.expand-icon {
+  display: none;
+  transition: transform 0.3s ease;
+}
+
+.employee-id-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mobile-details-row {
+  display: none;
+  background-color: #f8f9fa;
+}
+
+.mobile-details-content {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  padding: 0 16px;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+  font-size: 14px;
+}
+
+.detail-item:not(:last-child) {
+  border-bottom: 1px dashed #e0e0e0;
+}
+
+.detail-item strong {
+  color: #495057;
+}
+
+/* --- Media Query for Mobile View --- */
+@media (max-width: 768px) {
+  .desktop-only-cell {
+    display: none;
+  }
+
+  .expand-icon {
+    display: inline-block;
+    color: #435ebe;
+  }
+
+  .main-row {
+    cursor: pointer;
+  }
+
+  .main-row.is-expanded {
+    background-color: #f3f5ff;
+  }
+
+  .main-row.is-expanded .expand-icon {
+    transform: rotate(90deg);
+  }
+
+  .main-row.is-expanded + .mobile-details-row {
+    display: table-row;
+  }
+
+  .main-row.is-expanded + .mobile-details-row .mobile-details-content {
+    max-height: 200px;
+    padding: 0px 16px;
+  }
+
   .employee-table {
     font-size: 12.5px;
   }
   .employee-table th,
   .employee-table td {
-    padding: 2px 6px !important;
+    padding: 8px 6px !important;
   }
   .action-button {
     padding: 3px 5px;
@@ -106,6 +171,6 @@
   }
   .status-badge {
     font-size: 11px;
-    padding: 5px 10px;
+    padding: 3px 10px;
   }
 }
